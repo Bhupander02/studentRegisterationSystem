@@ -92,23 +92,25 @@ function renderStudent(student) {
   const li = document.createElement("li");
   li.dataset.id = student.studentID;
   li.className =
-    "p-3 bg-white border rounded-md flex items-start justify-between";
+    "p-4 bg-white rounded-2xl shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:shadow-lg transition";
   li.innerHTML = `
-    <div>
-      <div class="font-medium text-gray-800">${escapeHtml(student.name)} 
-        <span class="text-xs text-gray-500">(${escapeHtml(
-          student.studentID
-        )})</span>
+    <div class="flex-1">
+      <div class="font-medium text-gray-800 text-sm sm:text-base">
+        ${escapeHtml(student.name)} 
+        <span class="text-xs text-gray-500">(${escapeHtml(student.studentID)})</span>
       </div>
-      <div class="text-xs text-gray-500">${escapeHtml(
-        student.contact
-      )} • ${escapeHtml(student.email)}</div>
+      <div class="text-xs text-gray-500 mt-1 sm:mt-0">
+        ${escapeHtml(student.contact)} • ${escapeHtml(student.email)}
       </div>
+    </div>
+    <div class="flex gap-3 mt-3 sm:mt-0">
       <button type="button" class="text-xs text-red-600 hover:underline remove-btn">Remove</button>
-      <button type="button" class="text-xs text-red-600 hover:underline edit-btn">Edit</button>
-      `;
+      <button type="button" class="text-xs text-indigo-600 hover:underline edit-btn">Edit</button>
+    </div>
+  `;
   list.prepend(li);
 }
+
 
 function escapeHtml(str) {
   return String(str)
